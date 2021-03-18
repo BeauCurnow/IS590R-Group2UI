@@ -8,7 +8,9 @@ import {
   RouteComponentProps,
   Switch
 } from "react-router-dom";
-import Nav from './components/nav'
+import Nav from './components/nav';
+import Login from './pages/login';
+import Register from './pages/register';
 
 function App() {
   return (
@@ -16,9 +18,9 @@ function App() {
       <Router>
         <Nav/>
         <Switch>
-          <Route path="/"></Route>
-          <Route path="login"></Route>
-          <Route path="register"></Route>
+          <Route path="/" exact></Route>
+          <Route path="/login" exact component={Login}></Route>
+          <Route path="/register" exact component={Register}></Route>
         </Switch>
       </Router>
     </div>
