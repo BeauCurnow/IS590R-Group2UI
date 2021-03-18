@@ -11,6 +11,7 @@ import {
 import Nav from './components/nav';
 import Login from './pages/login';
 import Register from './pages/register';
+import Home from './pages/home';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
       <Router>
         <Nav/>
         <Switch>
-          <Route path="/" exact></Route>
+          <Route path="/" exact component={Home}></Route>
           <Route path="/login" exact component={Login}></Route>
           <Route path="/register" exact component={Register}></Route>
         </Switch>
