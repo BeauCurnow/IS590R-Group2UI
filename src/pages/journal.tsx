@@ -18,7 +18,8 @@ function Journal() {
 
     return (
         <div>
-            <button onClick={showValue}>Show value</button>
+            <div><button onClick={showValue}>Show value</button></div>
+            <div><input defaultValue="Entry Title"></input></div>
             <Editor
                 height="90vh"
                 defaultLanguage="javascript"

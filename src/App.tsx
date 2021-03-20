@@ -12,7 +12,8 @@ import Nav from './components/nav';
 import Login from './pages/login';
 import Register from './pages/register';
 import Home from './pages/home';
-
+import Journal from './pages/journal';
+import Entries from './pages/entries';
 function App() {
   return (
     <div className="App">
@@ -22,6 +23,8 @@ function App() {
           <Route path="/" exact component={Home}></Route>
           <Route path="/login" exact component={Login}></Route>
           <Route path="/register" exact component={Register}></Route>
+          <Route path="/journal" exact component={Journal}></Route>
+          <Route path="/entries" exact component={Entries}></Route>
         </Switch>
       </Router>
     </div>
