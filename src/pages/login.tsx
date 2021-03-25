@@ -4,6 +4,11 @@ import React from 'react';
 function Login(){
 
 
+    const[username, setusername] = React.useState("Username");
+
+    const[password, setpassword] = React.useState("Password");
+
+
     function handleLogin(){
         // Put Post Request Here
     }
