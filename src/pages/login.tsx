@@ -1,32 +1,44 @@
-import React from 'react';
+import React from "react";
 
+function Login() {
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
-function Login(){
+  function handleLogin() {
+    // Put Post Request Here
+    console.log({ username, password });
+    fetch("localhost:8080/api/v1/user", {
+      method: "POST",
+      body: JSON.stringify({ username: username, password: password }),
+    });
+  }
 
-
-    const[username, setusername] = React.useState("Username");
-
-    const[password, setpassword] = React.useState("Password");
-
-
-    function handleLogin(){
-        // Put Post Request Here
-    }
-
-
-
-
-    return(
+  return (
+    <div>
+      <h1>Please Login</h1>
+      <form onSubmit={handleLogin}>
         <div>
-            <h1>Please Login</h1>
-            <form>
-                <div><input defaultValue="Username"></input></div>
-                <div><input defaultValue="Password"></input></div>
-                <div><button>Login</button></div>
-            </form>
+          <input
+            type="text"
+            value={username}
+            placeholder="Username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </div>
-    )
+        <div>
+          <input
+            type="text"
+            value={password}
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div>
+          <button>Login</button>
+        </div>
+      </form>
+    </div>
+  );
 }
 
 export default Login;
-
