@@ -1,26 +1,51 @@
-import React from 'react';
+import React from "react";
 
-function Register(){
+function Register() {
+  const [username, setUsername] = React.useState("Username");
 
+  const [password, setPassword] = React.useState("Password");
 
-    const[username, setusername] = React.useState("Username");
+  const [email, setEmail] = React.useState("Email");
 
-    const[password, setpassword] = React.useState("Password");
+  async function handleRegister() {
+    // Put Post Request Here
+    console.log({ username, password, email });
+    await fetch("localhost:8080/api/v1/user", {
+      method: "POST",
+      body: JSON.stringify({ username: username, password: password }),
+    });
+  }
 
-    const[email, setemail] = React.useState("Email");
-
-    
-    return(
+  return (
+    <div>
+      <form onSubmit={handleRegister}>
         <div>
-            <form>
-                <div><input defaultValue={username}/></div>
-                <div><input defaultValue={password}/></div>
-                <div><input defaultValue="Confirm Password"/></div>
-                <div><input defaultValue={email}/></div>
-                <div><button>Login</button></div>
-            </form>
+          <input
+            placeholder={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </div>
-    )
+        <div>
+          <input
+            placeholder={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div>
+          <input placeholder="Confirm Password" />
+        </div>
+        <div>
+          <input
+            placeholder={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div>
+          <button>Login</button>
+        </div>
+      </form>
+    </div>
+  );
 }
 
 export default Register;
