@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../components/button'
 
 
 function Login(){
@@ -22,7 +23,7 @@ function Login(){
             <form>
                 <div><input defaultValue="Username"></input></div>
                 <div><input defaultValue="Password"></input></div>
-                <div><button>Login</button></div>
+                <div><Button>Login</Button></div>
             </form>
         </div>
     )
