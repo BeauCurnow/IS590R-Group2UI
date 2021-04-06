@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../components/button'
-
+import Input from '../components/input'
 
 function Login(){
 
@@ -18,11 +18,12 @@ function Login(){
 
 
     return(
-        <div>
+        <div style={{display: 'block',  justifyContent:'center', alignItems:'center', height: '100vh'}} >
             <h1>Please Login</h1>
             <form>
-                <div><input defaultValue="Username"></input></div>
-                <div><input defaultValue="Password"></input></div>
+                <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}><Input defaultValue="Username"/></div>
+                <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}><Input defaultValue="Password"/></div>
+                <br/>
                 <div><Button>Login</Button></div>
             </form>
         </div>
