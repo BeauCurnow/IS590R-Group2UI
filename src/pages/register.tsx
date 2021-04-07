@@ -1,4 +1,6 @@
-import React from "react";
+import React from 'react';
+import Input from '../components/input'
+import Button from '../components/button'
 
 function Register() {
   const [username, setUsername] = React.useState("Username");

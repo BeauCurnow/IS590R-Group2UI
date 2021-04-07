@@ -2,6 +2,9 @@ import React, { useRef } from 'react';
 import Editor from "@monaco-editor/react";
 import { useEffect } from 'react';
 
+import Button from '../components/button'
+import Input from '../components/input'
+
 function Journal() {
 
     const editorRef = useRef(null);
@@ -30,14 +33,15 @@ function Journal() {
 
     return (
         <div>
-            <div><h3>{title}</h3><input defaultValue={title} onChange={(e) => setTitle(e.target.value)}/></div>
-            <div><button onClick={showValue}>Save Journal</button></div>
+            <h3>{title}</h3>
+            <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}><Input defaultValue={title} onChange={(e) => setTitle(e.target.value)}/></div>
+            <div><Button onClick={showValue}>Save Journal</Button></div>
             <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
             <Editor
                 height="80vh"
                 width="80vw"
                 defaultLanguage="markdown"
-                defaultValue="// some comment"
+                defaultValue=""
                 value={journal}
                 onMount={handleEditorDidMount}
                 theme="vs-dark"
