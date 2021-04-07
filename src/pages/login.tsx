@@ -1,4 +1,6 @@
 import React from "react";
+import Button from '../components/button'
+import Input from '../components/input'
 
 function Login() {
   const [username, setUsername] = React.useState("");
@@ -17,24 +19,22 @@ function Login() {
     <div>
       <h1>Please Login</h1>
       <form onSubmit={handleLogin}>
-        <div>
-          <input
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}><Input
             type="text"
             value={username}
             placeholder="Username"
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div>
-          <input
+            onChange={(e : any) => setUsername(e.target.value)}
+          /></div>
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+          <Input
             type="text"
             value={password}
             placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e : any) => setPassword(e.target.value)}
           />
         </div>
         <div>
-          <button>Login</button>
+          <Button>Login</Button>
         </div>
       </form>
     </div>

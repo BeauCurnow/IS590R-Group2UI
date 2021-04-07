@@ -32,13 +32,17 @@ function Journal() {
         <div>
             <div><h3>{title}</h3><input defaultValue={title} onChange={(e) => setTitle(e.target.value)}/></div>
             <div><button onClick={showValue}>Save Journal</button></div>
+            <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
             <Editor
-                height="90vh"
-                defaultLanguage="javascript"
+                height="80vh"
+                width="80vw"
+                defaultLanguage="markdown"
                 defaultValue="// some comment"
                 value={journal}
                 onMount={handleEditorDidMount}
+                theme="vs-dark"
             />
+            </div>
         </div>
     );
 }
