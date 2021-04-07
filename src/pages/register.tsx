@@ -10,15 +10,17 @@ function Register() {
   async function handleRegister() {
     // Put Post Request Here
     console.log({ username, password, email });
-    await fetch("localhost:8080/api/v1/user", {
+
+    let res = await fetch("http://localhost:8080/api/v1/user", {
       method: "POST",
-      body: JSON.stringify({ username: username, password: password }),
+      body: JSON.stringify( { username: username, email: email } ),
     });
+    console.log(res)
   }
 
   return (
     <div>
-      <form onSubmit={handleRegister}>
+      <form onSubmit={(e) => handleRegister}>
         <div>
           <input
             placeholder={username}
@@ -41,7 +43,7 @@ function Register() {
           />
         </div>
         <div>
-          <button>Login</button>
+          <button type="button" onClick={() => handleRegister()}>Login</button>
         </div>
       </form>
     </div>
