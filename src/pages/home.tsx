@@ -18,7 +18,15 @@ function Home() {
           <Link to="/entries">View Your Journal Entries</Link>
         </div>
         <div>
-          <Link to="/journal">Create a New Journal</Link>
+          <Link to={{
+            pathname: "/journal" ,
+            state:{
+              entry : {
+                title: 'New Journal',
+                journal: ''
+              }
+            }
+            }}>Create a New Journal</Link>
         </div>
       </div>
     </Router>
