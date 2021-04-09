@@ -20,7 +20,12 @@ function Entries(props: any){
 
 
     var list = entries.map((entry, index) => {
-        return(<p><Link to="/home">{entry.title}</Link> <p onClick={()=> deleteEntry(index)}>Delete</p></p>)
+        return(<p><Link to={{
+            pathname:"/journal",
+            state:{
+                entry: entry
+            }
+        }}  >{entry.title}</Link> <p onClick={()=> deleteEntry(index)}>Delete</p></p>)
     })
     return(
     <div>

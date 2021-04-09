@@ -5,12 +5,12 @@ import { useEffect } from 'react';
 import Button from '../components/button'
 import Input from '../components/input'
 
-function Journal() {
+function Journal(props: any) {
 
     const editorRef = useRef(null);
 
-    const [journal, setJournal] = React.useState("Journal");
-    const [title, setTitle] = React.useState("Title")
+    const [journal, setJournal] = React.useState(props.location.state.entry.journal);
+    const [title, setTitle] = React.useState(props.location.state.entry.title)
 
     // useEffect(() => {
     // })
