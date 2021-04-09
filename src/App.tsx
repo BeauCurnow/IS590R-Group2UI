@@ -24,7 +24,7 @@ function App() {
           <Route path="/login" exact component={Login}></Route>
           <Route path="/register" exact component={Register}></Route>
           <Route path="/journal" exact component={Journal}></Route>
-          <Route path="/entries" exact component={Entries}></Route>
+          <Route path="/entries" exact component={() => <Entries entries={Entries}/>}></Route>
         </Switch>
       </Router>
     </div>

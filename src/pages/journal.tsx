@@ -34,12 +34,13 @@ function Journal() {
     return (
         <div>
             <h3>{title}</h3>
-            <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}><Input defaultValue={title} onChange={(e) => setTitle(e.target.value)}/></div>
-            <div><Button onClick={showValue}>Save Journal</Button></div>
-            <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
+            <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}><Input defaultValue={title} onChange={(e) => setTitle(e.target.value)}/><Button onClick={showValue}>Save Journal</Button></div>
+            <div></div>
+            <br/>
+            <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
             <Editor
-                height="80vh"
-                width="80vw"
+                height="70vh"
+                width="70vw"
                 defaultLanguage="markdown"
                 defaultValue=""
                 value={journal}
@@ -47,6 +48,7 @@ function Journal() {
                 theme="vs-dark"
             />
             </div>
+
         </div>
     );
 }

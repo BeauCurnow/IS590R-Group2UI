@@ -3,6 +3,14 @@ import Journal from "./journal";
 import { Link, BrowserRouter as Router } from "react-router-dom";
 
 function Home() {
+
+  const [entries, setEntries] = React.useState([
+    {title: 'Test1', journal: 'This is a bunch of markdown!'},
+    {title: 'Test2', journal: 'This is a bunch of markdown!'},
+  ]);
+
+   
+
   return (
     <Router>
       <div>

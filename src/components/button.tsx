@@ -6,8 +6,10 @@ background: transparent;
 border-radius: 3px;
 border: 2px solid;
 color: grey;
-margin: 0 1em;
+margin: 1.5em;
 padding: 0.25em 1em;
+font-size: 1.2em
+
 `
 
 export default Button;

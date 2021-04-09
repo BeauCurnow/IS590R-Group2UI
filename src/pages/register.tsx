@@ -20,32 +20,34 @@ function Register() {
     console.log(res)
   }
 
+
   return (
     <div>
+        <br/>
       <form onSubmit={(e) => handleRegister}>
-        <div>
-          <input
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+          <Input
             placeholder={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div>
-          <input
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+          <Input
             placeholder={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <div>
-          <input placeholder="Confirm Password" />
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+          <Input placeholder="Confirm Password" />
         </div>
-        <div>
-          <input
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+          <Input
             placeholder={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div>
-          <button type="button" onClick={() => handleRegister()}>Login</button>
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+          <Button type="button" onClick={() => handleRegister()}>Login</Button>
         </div>
       </form>
     </div>
