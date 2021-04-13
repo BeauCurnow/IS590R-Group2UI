@@ -2,14 +2,20 @@ import React, { useRef } from 'react';
 import Editor from "@monaco-editor/react";
 import { useEffect } from 'react';
 
-function Journal() {
+import Button from '../components/button'
+import Input from '../components/input'
+import Title from '../components/title'
+function Journal(props: any) {
 
     const editorRef = useRef(null);
-
-    const [journal, setJournal] = React.useState("Journal");
-    const [title, setTitle] = React.useState("Title")
+    // const id = React.useState(props.location.state.entry.id)
+    const [journal, setJournal] = React.useState(props.location.state.entry.journal);
+    const [title, setTitle] = React.useState(props.location.state.entry.title)
 
     // useEffect(() => {
+        // fetch journal based on id
+        // setJouranl(entry.journal)
+        // setTitle(entry.title)
     // })
 
 
@@ -30,19 +36,22 @@ function Journal() {
 
     return (
         <div>
-            <div><h3>{title}</h3><input defaultValue={title} onChange={(e) => setTitle(e.target.value)}/></div>
-            <div><button onClick={showValue}>Save Journal</button></div>
-            <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
+            <Title>{title}</Title>
+            <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}><Input defaultValue={title} onChange={(e) => setTitle(e.target.value)}/><Button onClick={showValue}>Save Journal</Button></div>
+            <div></div>
+            <br/>
+            <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
             <Editor
-                height="80vh"
-                width="80vw"
+                height="70vh"
+                width="70vw"
                 defaultLanguage="markdown"
-                defaultValue="// some comment"
+                defaultValue=""
                 value={journal}
                 onMount={handleEditorDidMount}
                 theme="vs-dark"
             />
             </div>
+
         </div>
     );
 }

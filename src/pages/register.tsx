@@ -21,6 +21,7 @@ function Register() {
     history.push("/");
   }
 
+
   return (
     <>
     <h1>Register</h1>
