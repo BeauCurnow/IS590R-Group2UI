@@ -4,15 +4,18 @@ import { useEffect } from 'react';
 
 import Button from '../components/button'
 import Input from '../components/input'
-
+import Title from '../components/title'
 function Journal(props: any) {
 
     const editorRef = useRef(null);
-
+    // const id = React.useState(props.location.state.entry.id)
     const [journal, setJournal] = React.useState(props.location.state.entry.journal);
     const [title, setTitle] = React.useState(props.location.state.entry.title)
 
     // useEffect(() => {
+        // fetch journal based on id
+        // setJouranl(entry.journal)
+        // setTitle(entry.title)
     // })
 
 
@@ -33,7 +36,7 @@ function Journal(props: any) {
 
     return (
         <div>
-            <h3>{title}</h3>
+            <Title>{title}</Title>
             <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}><Input defaultValue={title} onChange={(e) => setTitle(e.target.value)}/><Button onClick={showValue}>Save Journal</Button></div>
             <div></div>
             <br/>

@@ -10,6 +10,7 @@ background: none;
   border: none;
   border-radius: 0;
   border-bottom: 1px solid mix(white, $bg-color, 70%);
+  font-family: "Courier New";
 `
 
 export default Input;
