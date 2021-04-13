@@ -1,6 +1,7 @@
 import React from "react";
 import Journal from "./journal";
 import { Link, BrowserRouter as Router } from "react-router-dom";
+import Subtitle from '../components/subtitle';
 
 function Home() {
   
@@ -16,7 +17,7 @@ function Home() {
     <Router>
       <div>
         <div>
-          <Link to="/entries">View Your Journal Entries</Link>
+          <Link to="/entries"><Subtitle>View Your Journal Entries</Subtitle></Link>
         </div>
         <div>
           <Link to={{
@@ -27,7 +28,7 @@ function Home() {
                 journal: ''
               }
             }
-            }}>Create a New Journal</Link>
+            }}><Subtitle>Create a New Journal</Subtitle></Link>
         </div>
       </div>
     </Router>

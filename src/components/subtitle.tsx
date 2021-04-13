@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Subtitle = styled.h2`
+const Subtitle = styled.h3`
 font-family: "Courier New";
 `
 

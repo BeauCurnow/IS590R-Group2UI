@@ -14,6 +14,7 @@ list-style-type: none;
 
 const NavItem = styled.li`
   float: left;
+  font-family: "Courier New";
 `
 
 const NavLink = styled.div`

@@ -8,8 +8,8 @@ border: 2px solid;
 color: grey;
 margin: 1.5em;
 padding: 0.25em 1em;
-font-size: 1.2em
-
+font-size: 1.2em;
+font-family: "Courier New";
 `
 
 export default Button;

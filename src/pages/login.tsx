@@ -1,6 +1,7 @@
 import React from "react";
 import Button from '../components/button'
 import Input from '../components/input'
+import Title from '../components/title'
 
 function Login() {
   const [username, setUsername] = React.useState("");
@@ -17,8 +18,9 @@ function Login() {
 
   return (
     <div>
-      <h1>Please Login</h1>
-      <form onSubmit={handleLogin}>
+              <br/>
+      <form style={{backgroundColor: "white", padding: 20}} onSubmit={handleLogin}>
+      <Title>Please Login</Title>
         <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}><Input
             type="text"
             value={username}

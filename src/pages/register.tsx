@@ -1,6 +1,7 @@
 import React from 'react';
 import Input from '../components/input'
 import Button from '../components/button'
+import Title from '../components/title'
 
 function Register() {
   const [username, setUsername] = React.useState("Username");
@@ -24,7 +25,8 @@ function Register() {
   return (
     <div>
         <br/>
-      <form onSubmit={(e) => handleRegister}>
+      <form style={{backgroundColor: "white", padding: 20}} onSubmit={(e) => handleRegister}>
+        <Title>Please Sign Up Below</Title>
         <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
           <Input
             placeholder={username}
