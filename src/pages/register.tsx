@@ -10,15 +10,19 @@ function Register() {
 
   let history = useHistory();
 
-  async function handleRegister() {
-    await fetch("http://localhost:8080/api/v1/user", {
+  function handleRegister() {
+    fetch("http://localhost:8080/api/v1/user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ name: username, email: email }),
+    }).then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      history.push("/", data)
     });
-    history.push("/");
   }
 
 

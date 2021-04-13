@@ -9,19 +9,17 @@ function Login() {
   const [password, setPassword] = React.useState("");
 
   function handleLogin() {
-    console.log({ username, password });
     // fetch("localhost:8080/api/v1/user", {
     //   method: "POST",
     //   body: JSON.stringify({ username: username, password: password }),
     // });
-    const fakeResponse = {id: "FOAIENO23OICNM92J", username: "test name", email:"test@test.com", status:200}
-    if (fakeResponse.status === 200) {
-      //store session in cookie
-      //store response in context?
-      history.push("/")
-    } else {
-      console.error(fakeResponse)
-    }
+    fetch("http://localhost:8080/api/v1/user/e9065b24-8b01-4d0c-81e3-fb794a83e952")
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      history.push("/", data)
+    });
   }
 
   return (

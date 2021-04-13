@@ -1,59 +1,96 @@
-import React, { useRef } from 'react';
+import { useRef, useState } from "react";
 import Editor from "@monaco-editor/react";
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
-import Button from '../components/button'
-import Input from '../components/input'
-import Title from '../components/title'
+import Button from "../components/button";
+import Input from "../components/input";
+import Title from "../components/title";
 function Journal(props: any) {
+  const editorRef = useRef();
+  const [journalId] = useState(props.location.state.id);
+  const [markdown, setMarkdown] = useState(props.location.state.journal);
+  const [title, setTitle] = useState(props.location.state.title);
+  const [user, setUser] = useState(props.location.state.user);
 
-    const editorRef = useRef(null);
-    // const id = React.useState(props.location.state.entry.id)
-    const [journal, setJournal] = React.useState(props.location.state.entry.journal);
-    const [title, setTitle] = React.useState(props.location.state.entry.title)
+  function handleEditorDidMount(editor: any, monaco: any) {
+    editorRef.current = editor;
+  }
 
-    // useEffect(() => {
-        // fetch journal based on id
-        // setJouranl(entry.journal)
-        // setTitle(entry.title)
-    // })
-
-
-    function handleEditorDidMount(editor: any, monaco: any) {
-        editorRef.current = editor;
+  function saveJournal() {
+    if (editorRef !== null) {
+      // @ts-ignore: Object is possibly 'null'.
+      setMarkdown(editorRef.current.getValue());
+      if (journalId) {
+        fetch("http://localhost:8080/api/v1/journalentry/" + journalId, {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+          // @ts-ignore: Object is possibly 'null'.
+          body: JSON.stringify({ id: journalId, title, markdown: editorRef.current.getValue(), html: "", userid: user.id }),
+        }).then((response) => {
+          if (response.status === 200) {
+            alert("Journal Saved");
+          } else {
+            console.error(response);
+          }
+        });
+      } else {
+        fetch("http://localhost:8080/api/v1/journalentry/", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+          // @ts-ignore: Object is possibly 'null'.
+          body: JSON.stringify({ id: null, title, markdown: editorRef.current.getValue(), html: "", userid: user.id }),
+        }).then((response) => {
+          if (response.status === 200) {
+            alert("Journal Saved");
+          } else {
+            console.error(response);
+          }
+        });
+      }
     }
+  }
 
-    function showValue() {
-        if (editorRef != null) {
-            // @ts-ignore: Object is possibly 'null'.
-            alert(editorRef.current.getValue());
-            // @ts-ignore: Object is possibly 'null'.
-            setJournal(editorRef.current.getValue());
-            console.log(journal)
-        }
-    }
-
-
-    return (
-        <div>
-            <Title>{title}</Title>
-            <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}><Input defaultValue={title} onChange={(e) => setTitle(e.target.value)}/><Button onClick={showValue}>Save Journal</Button></div>
-            <div></div>
-            <br/>
-            <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
-            <Editor
-                height="70vh"
-                width="70vw"
-                defaultLanguage="markdown"
-                defaultValue=""
-                value={journal}
-                onMount={handleEditorDidMount}
-                theme="vs-dark"
-            />
-            </div>
-
-        </div>
-    );
+  return (
+    <div>
+      <Title>{title}</Title>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Input
+          defaultValue={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <Button onClick={saveJournal}>Save Journal</Button>
+      </div>
+      <div></div>
+      <br />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Editor
+          height="70vh"
+          width="70vw"
+          defaultLanguage="markdown"
+          defaultValue=""
+          value={markdown}
+          onMount={handleEditorDidMount}
+          theme="vs-dark"
+        />
+      </div>
+    </div>
+  );
 }
 
 export default Journal;

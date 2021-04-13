@@ -1,37 +1,52 @@
-import React from "react";
-import Journal from "./journal";
-import { Link, BrowserRouter as Router } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Button from "../components/button"
 
-function Home() {
-  
+function Home(props : any) {
+  const [user, setUser] = useState<User>();
 
-  const [entries, setEntries] = React.useState([
-    {title: 'Test1', journal: 'This is a bunch of markdown!'},
-    {title: 'Test2', journal: 'This is a bunch of markdown!'},
-  ]);
-
-   
+  useEffect(() => {
+    setUser(props.location.state)
+  },[])
 
   return (
-    <Router>
+    <>
+      {user ? 
+      <>
+      <h2>Welcome {user.name}</h2> 
       <div>
         <div>
-          <Link to="/entries">View Your Journal Entries</Link>
+          <Link to={{pathname: "/entries", state: user}}>View Your Journal Entries</Link>
         </div>
         <div>
-          <Link to={{
-            pathname: "/journal" ,
-            state:{
-              entry : {
-                title: 'New Journal',
-                journal: ''
-              }
-            }
-            }}>Create a New Journal</Link>
+          <Link
+            to={{
+              pathname: "/journal",
+              state: {
+                  title: "New Journal",
+                  journal: "",
+                  user: user
+              },
+            }}
+          >
+            Create a New Journal
+          </Link>
         </div>
       </div>
-    </Router>
+      </> : (
+        <>
+        <h2>Welcome!</h2>
+        <Link to="/login"><Button>Login to create a journal</Button></Link>
+        </>
+      )}
+    </>
   );
 }
 
 export default Home;
+
+type User = {
+  id: string,
+  name: string,
+  email: string
+}
