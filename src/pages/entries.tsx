@@ -3,6 +3,7 @@ import { title } from 'node:process';
 import React from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Title from '../components/title'
 
 
 function Entries(props: any){
@@ -29,7 +30,7 @@ function Entries(props: any){
     })
     return(
     <div>
-        <h1>Your Entries</h1>
+        <Title>Your Entries</Title>
         <div>
             {list}
         </div> 

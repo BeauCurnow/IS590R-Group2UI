@@ -19,7 +19,8 @@ function Login() {
   return (
     <div>
               <br/>
-      <form style={{backgroundColor: "white", padding: 20}} onSubmit={handleLogin}>
+      <form style={{backgroundColor: "white", padding: "20px", marginRight: "30vw", marginLeft: "30vw"}} onSubmit={handleLogin}>
+      <div style={{border: "3px solid"}}>
       <Title>Please Login</Title>
         <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}><Input
             type="text"
@@ -37,6 +38,7 @@ function Login() {
         </div>
         <div>
           <Button>Login</Button>
+        </div>
         </div>
       </form>
     </div>

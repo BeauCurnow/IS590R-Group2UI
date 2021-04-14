@@ -15,7 +15,10 @@ function Home() {
 
   return (
     <Router>
-      <div>
+      <br/>
+      <div style={{backgroundColor: "white", marginLeft: "30vw", marginRight: "30vw", padding:20}}>
+      <br/>
+      <div style={{border: "3px solid"}}>
         <div>
           <Link to="/entries"><Subtitle>View Your Journal Entries</Subtitle></Link>
         </div>
@@ -30,6 +33,9 @@ function Home() {
             }
             }}><Subtitle>Create a New Journal</Subtitle></Link>
         </div>
+        </div>
+        <br/>
+
       </div>
     </Router>
   );

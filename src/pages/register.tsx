@@ -25,7 +25,8 @@ function Register() {
   return (
     <div>
         <br/>
-      <form style={{backgroundColor: "white", padding: 20}} onSubmit={(e) => handleRegister}>
+      <form style={{backgroundColor: "white", padding: 20, marginRight: "30vw", marginLeft: "30vw"}} onSubmit={(e) => handleRegister}>
+        <div style={{border: "3px solid"}}>
         <Title>Please Sign Up Below</Title>
         <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
           <Input
@@ -50,6 +51,7 @@ function Register() {
         </div>
         <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
           <Button type="button" onClick={() => handleRegister()}>Login</Button>
+          </div>
         </div>
       </form>
     </div>

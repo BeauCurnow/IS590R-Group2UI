@@ -37,7 +37,7 @@ function Journal(props: any) {
     return (
         <div>
             <br/>
-            <div style={{backgroundColor: "white", width:"70vw", marginLeft: "15vw", marginRight: "15vw"}}>
+            <div style={{backgroundColor: "white", width:"70vw", marginLeft: "15vw", marginRight: "15vw", border: "3px solid"}}>
                 <br/>
             <Title>{title}</Title>
             <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}><Input defaultValue={title} onChange={(e) => setTitle(e.target.value)}/><Button onClick={showValue}>Save Journal</Button></div>
