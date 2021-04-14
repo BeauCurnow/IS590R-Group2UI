@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../components/button";
 import Input from "../components/input";
 import { useHistory } from "react-router-dom";
+import Title from '../components/title'
 
 function Register() {
   const [username, setUsername] = React.useState("Username");
@@ -27,56 +28,38 @@ function Register() {
 
 
   return (
-    <>
-    <h1>Register</h1>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Input
-          placeholder={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Input
-          placeholder={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Input placeholder="Confirm Password" />
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Input placeholder={email} onChange={(e) => setEmail(e.target.value)} />
-      </div>
-      <div>
-        <Button type="button" onClick={() => handleRegister()}>
-          Login
-        </Button>
-      </div>
-    </>
+    <div>
+        <br/>
+      <form style={{backgroundColor: "white", padding: 20, marginRight: "30vw", marginLeft: "30vw"}} onSubmit={(e) => handleRegister}>
+        <div style={{border: "3px solid"}}>
+        <Title>Please Sign Up Below</Title>
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+          <Input
+            placeholder={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+          <Input
+            placeholder={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+          <Input placeholder="Confirm Password" />
+        </div>
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+          <Input
+            placeholder={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+          <Button type="button" onClick={() => handleRegister()}>Login</Button>
+          </div>
+        </div>
+      </form>
+    </div>
   );
 }
 

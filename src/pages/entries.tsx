@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Button from "../components/button";
+import { render } from "@testing-library/react";
+import { title } from "node:process";
+import React from "react";
+import Title from "../components/title";
 
 function Entries(props: any) {
   let location = useLocation();
@@ -52,7 +56,7 @@ function Entries(props: any) {
   });
   return (
     <div>
-      <h1>Your Entries</h1>
+      <Title>Your Entries</Title>
       <div>{list}</div>
     </div>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../components/button";
 import Input from "../components/input";
 import { useHistory } from "react-router-dom";
+import Title from '../components/title'
 
 function Login() {
   let history = useHistory();
@@ -24,38 +25,29 @@ function Login() {
 
   return (
     <div>
-      <h1>Please Login</h1>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Input
-          type="text"
-          value={username}
-          placeholder="Username"
-          onChange={(e: any) => setUsername(e.target.value)}
-        />
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Input
-          type="text"
-          value={password}
-          placeholder="Password"
-          onChange={(e: any) => setPassword(e.target.value)}
-        />
-      </div>
-      <div>
-        <Button onClick={() => handleLogin()}>Login</Button>
-      </div>
+      <br/>
+      <form style={{backgroundColor: "white", padding: "20px", marginRight: "30vw", marginLeft: "30vw"}} onSubmit={handleLogin}>
+      <div style={{border: "3px solid"}}>
+      <Title>Please Login</Title>
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}><Input
+            type="text"
+            value={username}
+            placeholder="Username"
+            onChange={(e : any) => setUsername(e.target.value)}
+          /></div>
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+          <Input
+            type="text"
+            value={password}
+            placeholder="Password"
+            onChange={(e : any) => setPassword(e.target.value)}
+          />
+        </div>
+        <div>
+          <Button onClick={() => handleLogin()}>Login</Button>
+        </div>
+        </div>
+      </form>
     </div>
   );
 }

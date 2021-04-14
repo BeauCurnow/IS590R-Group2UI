@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Button from "../components/button"
+import React from "react";
+import Journal from "./journal";
+import { Link, BrowserRouter as Router } from "react-router-dom";
+import Subtitle from '../components/subtitle';
 
 function Home(props : any) {
   const [user, setUser] = useState<User>();
@@ -15,9 +18,7 @@ function Home(props : any) {
       <>
       <h2>Welcome {user.name}</h2> 
       <div>
-        <div>
           <Link to={{pathname: "/entries", state: user}}>View Your Journal Entries</Link>
-        </div>
         <div>
           <Link
             to={{
@@ -32,6 +33,7 @@ function Home(props : any) {
             Create a New Journal
           </Link>
         </div>
+        <br/>
       </div>
       </> : (
         <>
