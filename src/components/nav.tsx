@@ -31,8 +31,6 @@ const NavLink = styled.div`
 `
 
 
-
-
 function Nav(){
     return(
         <NavBar>
