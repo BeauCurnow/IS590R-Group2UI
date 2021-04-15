@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import Editor from "@monaco-editor/react";
-import { useEffect } from "react";
 
 import Button from "../components/button";
 import Input from "../components/input";
@@ -10,7 +9,7 @@ function Journal(props: any) {
   const [journalId] = useState(props.location.state.id);
   const [markdown, setMarkdown] = useState(props.location.state.journal);
   const [title, setTitle] = useState(props.location.state.title);
-  const [user, setUser] = useState(props.location.state.user);
+  const [user] = useState(props.location.state.user);
 
   function handleEditorDidMount(editor: any, monaco: any) {
     editorRef.current = editor;

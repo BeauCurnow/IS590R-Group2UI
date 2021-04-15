@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 import Button from "../components/button"
-import React from "react";
-import Journal from "./journal";
-import { Link, BrowserRouter as Router } from "react-router-dom";
-import Subtitle from '../components/subtitle';
+import { Link } from "react-router-dom";
 
 function Home(props : any) {
   const [user, setUser] = useState<User>();

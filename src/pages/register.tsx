@@ -26,7 +26,6 @@ function Register() {
     });
   }
 
-
   return (
     <div>
         <br/>
@@ -55,7 +54,7 @@ function Register() {
           />
         </div>
         <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
-          <Button type="button" onClick={() => handleRegister()}>Login</Button>
+          <Button type="button" onClick={() => handleRegister()}>Register</Button>
           </div>
         </div>
       </form>
