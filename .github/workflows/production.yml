@@ -19,7 +19,7 @@ jobs:
         npm install
     - name: Production Build
       run: |
-        npm CI=false run-script build
+        CI=false npm run-script build
     - name: Unit Tests
       run: |
         npm test
