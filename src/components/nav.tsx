@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
+import { FaHome } from 'react-icons/fa'
+import { FaUserAlt } from 'react-icons/fa'
+import { BsCardText } from 'react-icons/bs'
 
 const NavBar = styled.ul
 `
@@ -34,9 +37,9 @@ const NavLink = styled.div`
 function Nav(){
     return(
         <NavBar>
-          <NavItem><NavLink><Link to="/">Home</Link></NavLink></NavItem>
-          <NavItem><NavLink><Link to="/login">Login</Link></NavLink></NavItem>
-          <NavItem><NavLink><Link to="/register">Register</Link></NavLink></NavItem>
+          <NavItem><NavLink><Link to="/">Home <FaHome/></Link></NavLink></NavItem>
+          <NavItem><NavLink><Link to="/login">Login <FaUserAlt /></Link></NavLink></NavItem>
+          <NavItem><NavLink><Link to="/register">Register <BsCardText /></Link></NavLink></NavItem>
         </NavBar>
     );
 }

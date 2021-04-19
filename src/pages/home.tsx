@@ -18,7 +18,7 @@ function Home(props : any) {
       <Title>Welcome {user.name}</Title> 
       <div style={{backgroundColor: "white", padding: "20px", marginRight: "30vw", marginLeft: "30vw"}}>
       <div style={{border: "3px solid"}}>
-          <Link to={{pathname: "/entries", state: user}}><Subtitle>View Your Journal Entries</Subtitle></Link>
+          <Link to={{pathname: "/entries", state: user}}><Button>View Your Journal Entries</Button></Link>
         <div>
           <Link
             to={{
@@ -30,7 +30,7 @@ function Home(props : any) {
               },
             }}
           >
-            <Subtitle>Create a New Journal</Subtitle>
+            <Button>Create a New Journal</Button>
           </Link>
         </div>
         <br/>

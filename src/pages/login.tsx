@@ -14,7 +14,7 @@ function Login() {
     //   method: "POST",
     //   body: JSON.stringify({ username: username, password: password }),
     // });
-    fetch("http://localhost:8080/api/v1/user/e9065b24-8b01-4d0c-81e3-fb794a83e952")
+    fetch("http://ec2-34-215-202-19.us-west-2.compute.amazonaws.com:8080/api/v1/user/e9065b24-8b01-4d0c-81e3-fb794a83e952")
     .then((response) => {
       return response.json();
     })

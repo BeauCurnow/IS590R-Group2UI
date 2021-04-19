@@ -12,7 +12,7 @@ function Register() {
   let history = useHistory();
 
   function handleRegister() {
-    fetch("http://localhost:8080/api/v1/user", {
+    fetch("http://ec2-34-215-202-19.us-west-2.compute.amazonaws.com:8080/api/v1/user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

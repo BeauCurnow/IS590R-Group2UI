@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Button from "../components/button";
 import Title from "../components/title";
+import { FaTrash } from 'react-icons/fa';
 
 function Entries(props: any) {
   let location = useLocation();
@@ -11,7 +12,7 @@ function Entries(props: any) {
   useEffect(() => {
     let user = location.state as User;
     setUser(user);
-    fetch("http://localhost:8080/api/v1/journalentry/user/" + user.id)
+    fetch("http://ec2-34-215-202-19.us-west-2.compute.amazonaws.com:8080/api/v1/journalentry/user/" + user.id)
       .then((response) => {
         return response.json();
       })
@@ -21,7 +22,7 @@ function Entries(props: any) {
   }, []);
 
   function deleteEntry(entryId: string, index: number) {
-    fetch("http://localhost:8080/api/v1/journalentry/" + entryId, {
+    fetch("http://ec2-34-215-202-19.us-west-2.compute.amazonaws.com:8080/api/v1/journalentry/" + entryId, {
       method: "DELETE",
     }).then((response) => {
       console.log(response);
@@ -45,9 +46,9 @@ function Entries(props: any) {
             },
           }}
         >
-          {entry.title}
+          <Button>{entry.title}</Button>
         </Link>
-        <Button onClick={() => deleteEntry(entry.id, index)}>Delete</Button>
+        <FaTrash onClick={() => deleteEntry(entry.id, index)} />
       </div>
     );
   });

@@ -20,7 +20,7 @@ function Journal(props: any) {
       // @ts-ignore: Object is possibly 'null'.
       setMarkdown(editorRef.current.getValue());
       if (journalId) {
-        fetch("http://localhost:8080/api/v1/journalentry/" + journalId, {
+        fetch("http://ec2-34-215-202-19.us-west-2.compute.amazonaws.com:8080/api/v1/journalentry/" + journalId, {
           method: "PUT",
           headers: {
             "Content-type": "application/json; charset=UTF-8",
@@ -35,7 +35,7 @@ function Journal(props: any) {
           }
         });
       } else {
-        fetch("http://localhost:8080/api/v1/journalentry/", {
+        fetch("http://ec2-34-215-202-19.us-west-2.compute.amazonaws.com:8080/api/v1/journalentry/", {
           method: "POST",
           headers: {
             "Content-type": "application/json; charset=UTF-8",
