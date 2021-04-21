@@ -3,6 +3,7 @@ import { Story, Meta } from '@storybook/react';
 
 import { Button, ButtonProps } from './Button';
 
+/* istanbul ignore file */
 export default {
   title: 'Example/Button',
   component: Button,

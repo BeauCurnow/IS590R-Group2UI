@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+/* istanbul ignore file */
 const Input = styled.input`
 background: none;
   color: $muted-color;

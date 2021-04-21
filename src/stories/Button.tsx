@@ -1,6 +1,7 @@
 import React from 'react';
 import './button.css';
 
+/* istanbul ignore file */
 export interface ButtonProps {
   /**
    * Is this the principal call to action on the page?

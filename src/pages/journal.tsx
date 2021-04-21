@@ -39,11 +39,8 @@ function Journal(props: any) {
             }),
           }
         ).then((response) => {
-          if (response.status === 200) {
-            setSaved(true);
-          } else {
-            console.error(response);
-          }
+          if (response.status === 200) setSaved(true);
+          else console.error(response);
         });
       } else {
         fetch(
@@ -63,11 +60,8 @@ function Journal(props: any) {
             }),
           }
         ).then((response) => {
-          if (response.status === 200) {
-            setSaved(true);
-          } else {
-            console.error(response);
-          }
+          if (response.status === 200) setSaved(true);
+          else console.error(response);
         });
       }
     }

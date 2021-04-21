@@ -3,6 +3,7 @@ import React from 'react';
 import { Header } from './Header';
 import './page.css';
 
+/* istanbul ignore file */
 export interface PageProps {
   user?: {};
   onLogin: () => void;

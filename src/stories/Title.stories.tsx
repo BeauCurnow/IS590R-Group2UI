@@ -1,6 +1,7 @@
 import React from 'react';
 import Title from '../components/title';
 
+/* istanbul ignore file */
 export default {
     title: 'Components/Title',
     component: Title,

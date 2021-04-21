@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from './Button';
 import './header.css';
 
+/* istanbul ignore file */
 export interface HeaderProps {
   user?: {};
   onLogin: () => void;

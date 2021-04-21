@@ -3,6 +3,7 @@ import { Story, Meta } from '@storybook/react';
 
 import { Header, HeaderProps } from './Header';
 
+/* istanbul ignore file */
 export default {
   title: 'Example/Header',
   component: Header,

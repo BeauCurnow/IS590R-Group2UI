@@ -4,6 +4,7 @@ import { Story, Meta } from '@storybook/react';
 import { Page, PageProps } from './Page';
 import * as HeaderStories from './Header.stories';
 
+/* istanbul ignore file */
 export default {
   title: 'Example/Page',
   component: Page,

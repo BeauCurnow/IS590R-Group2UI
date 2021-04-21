@@ -59,7 +59,6 @@ function Register() {
           marginRight: "30vw",
           marginLeft: "30vw",
         }}
-        onSubmit={(e) => handleRegister}
       >
         <div style={{ border: "3px solid" }}>
           <Title>Please Sign Up Below</Title>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Input from '../components/input';
 
+/* istanbul ignore file */
 export default {
     title: 'Components/Input',
     component: Input,
