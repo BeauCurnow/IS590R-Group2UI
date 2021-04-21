@@ -42,7 +42,8 @@ function Home(props : any) {
         <div style={{backgroundColor: "white", padding: "20px", marginRight: "30vw", marginLeft: "30vw"}}>
         <div style={{border: "3px solid"}}>
         <Title>Welcome!</Title>
-        <Link to="/login"><Button>Login to create a journal</Button></Link>
+        <Subtitle>Login to create a journal</Subtitle>
+        <Link to="/login"><Button>Login</Button></Link>
         </div>
         </div>
         </>

@@ -9,6 +9,10 @@ margin: 1.5em;
 padding: 0.25em 1em;
 font-size: 1.2em;
 font-family: "Courier New";
+&:hover {
+    background: white;
+    color: black;
+};
 `
 
 export default Button;
