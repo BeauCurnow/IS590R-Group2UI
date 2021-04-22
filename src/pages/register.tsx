@@ -7,14 +7,15 @@ import Title from "../components/title";
 function Register() {
   const [name, setName] = React.useState("");
   const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [password, setPassword] = React.useState("password");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [registering, setRegistering] = React.useState(false);
+  const [error, setError] = React.useState(false);
 
   let history = useHistory();
 
-  function handleRegister() {
+  async function handleRegister() {
     if (!username) {
       document.getElementById("usernameError")!.innerHTML = "Username required";
     }
@@ -29,24 +30,29 @@ function Register() {
       document.getElementById("emailError")!.innerHTML = "Email required";
     }
     if (username && password && email && confirmPassword === password) {
-      setRegistering(true)
-      fetch(
+      setRegistering(true);
+      let response = await fetch(
         "http://ec2-34-215-202-19.us-west-2.compute.amazonaws.com:8080/api/v1/user",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ name: name, username: username, password: password }),
+          body: JSON.stringify({
+            name: name,
+            username: username,
+            password: password,
+          }),
         }
-      )
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          history.push("/", data);
-          setRegistering(false)
-        });
+      );
+      if (response.ok) {
+        let data = response.json();
+        history.push("/", data);
+        setRegistering(false);
+      } else {
+        setError(true);
+        setRegistering(false)
+      }
     }
   }
 
@@ -71,6 +77,20 @@ function Register() {
             }}
           >
             <Input
+              value={name}
+              placeholder="Name"
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Input
+              value={username}
               placeholder="Username"
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -84,6 +104,7 @@ function Register() {
             }}
           >
             <Input
+              value={password}
               type="password"
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
@@ -98,6 +119,7 @@ function Register() {
             }}
           >
             <Input
+              value={confirmPassword}
               type="password"
               placeholder="Confirm Password"
               onChange={(e) => setConfirmPassword(e.target.value)}
@@ -112,11 +134,17 @@ function Register() {
             }}
           >
             <Input
+              value={email}
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <span style={{ color: "red" }} id="emailError"></span>
+          {error && (
+              <span style={{ color: "red" }}>
+                There was an error registering you...<br />Please try again later
+              </span>
+            )}
           <div
             style={{
               display: "flex",

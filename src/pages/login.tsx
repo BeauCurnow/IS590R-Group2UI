@@ -8,8 +8,8 @@ import { FaKey } from "react-icons/fa";
 
 function Login() {
   let history = useHistory();
-  const [username, setUsername] = React.useState("testUN");
-  const [password, setPassword] = React.useState("password");
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
   const [loginFailed, setLoginFailed] = React.useState(false);
 
   async function handleLogin() {
