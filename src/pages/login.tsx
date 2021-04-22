@@ -8,30 +8,51 @@ import { FaKey } from "react-icons/fa";
 
 function Login() {
   let history = useHistory();
-  const [username, setUsername] = React.useState("logan");
+  const [username, setUsername] = React.useState("testUN");
   const [password, setPassword] = React.useState("password");
+  const [loginFailed, setLoginFailed] = React.useState(false);
 
-  function handleLogin() {
-    // fetch("localhost:8080/api/v1/user", {
-    //   method: "POST",
-    //   body: JSON.stringify({ username: username, password: password }),
-    // });
+  async function handleLogin() {
     if (!username) {
       document.getElementById("usernameError")!.innerHTML = "Username required";
-    } 
+    }
     if (!password) {
       document.getElementById("passwordError")!.innerHTML = "Password required";
     }
     if (username && password) {
-      fetch(
-        "http://ec2-34-215-202-19.us-west-2.compute.amazonaws.com:8080/api/v1/user/e9065b24-8b01-4d0c-81e3-fb794a83e952"
-      )
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          history.push("/", data);
-        });
+      let loginResponse = await fetch(
+        "http://ec2-34-215-202-19.us-west-2.compute.amazonaws.com:8080/login",
+        {
+          method: "POST",
+          body: JSON.stringify({ username: username, password: password }),
+        }
+      );
+      if (loginResponse.ok) {
+        setLoginFailed(false)
+
+        let userResponse = await fetch(
+          "http://ec2-34-215-202-19.us-west-2.compute.amazonaws.com:8080/api/v1/user/",
+          {
+            method: "POST",
+            body: JSON.stringify({ username: username, password: password }),
+          }
+        );
+
+        let data = userResponse.json()
+        history.push("/", data);
+      } else {
+        setLoginFailed(true)
+      }
+      // .then((response) => {
+      //   if(response.ok) {
+      //     return response.json();
+      //   } else {
+      //     setLoginFailed(true)
+      //   }
+      // })
+      // .then((data) => {
+      //   history.push("/", data);
+      // });
     }
   }
 
@@ -62,7 +83,8 @@ function Login() {
               value={username}
               placeholder="Username"
               onChange={(e: any) => setUsername(e.target.value)}
-            /><br />
+            />
+            <br />
           </div>
           <span style={{ color: "red" }} id="usernameError"></span>
           <div
@@ -82,6 +104,11 @@ function Login() {
             />
           </div>
           <span style={{ color: "red" }} id="passwordError"></span>
+          {loginFailed && (
+            <span style={{ color: "red" }}>
+              Incorrect Username or Password{" "}
+            </span>
+          )}
           <div>
             <Button onClick={() => handleLogin()}>Login</Button>
           </div>
