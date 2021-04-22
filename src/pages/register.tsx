@@ -7,7 +7,7 @@ import Title from "../components/title";
 function Register() {
   const [name, setName] = React.useState("");
   const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("password");
+  const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [registering, setRegistering] = React.useState(false);
