@@ -26,33 +26,27 @@ function Login() {
           method: "POST",
           body: JSON.stringify({ username: username, password: password }),
         }
-      );
-      if (loginResponse.ok) {
-        setLoginFailed(false)
+      )
+      const token = loginResponse.headers.get('Authorization') ?? "";
+      localStorage.setItem("token", token);
 
+      if (loginResponse.ok) {
+        setLoginFailed(false);
         let userResponse = await fetch(
-          "http://ec2-34-215-202-19.us-west-2.compute.amazonaws.com:8080/api/v1/user/",
+          "http://ec2-34-215-202-19.us-west-2.compute.amazonaws.com:8080/api/v1/user/username/" +
+            username,
           {
-            method: "POST",
-            body: JSON.stringify({ username: username, password: password }),
+            headers: {
+              Authorization: token,
+              "Content-Type": "application/json",
+            },
           }
         );
-
-        let data = userResponse.json()
+        let data = await userResponse.json();
         history.push("/", data);
       } else {
-        setLoginFailed(true)
+        setLoginFailed(true);
       }
-      // .then((response) => {
-      //   if(response.ok) {
-      //     return response.json();
-      //   } else {
-      //     setLoginFailed(true)
-      //   }
-      // })
-      // .then((data) => {
-      //   history.push("/", data);
-      // });
     }
   }
 
@@ -97,7 +91,7 @@ function Login() {
             <FaKey />
             &nbsp;
             <Input
-              type="text"
+              type="password"
               value={password}
               placeholder="Password"
               onChange={(e: any) => setPassword(e.target.value)}
@@ -105,9 +99,7 @@ function Login() {
           </div>
           <span style={{ color: "red" }} id="passwordError"></span>
           {loginFailed && (
-            <span style={{ color: "red" }}>
-              Incorrect Username or Password{" "}
-            </span>
+            <span style={{ color: "red" }}>Incorrect Username or Password</span>
           )}
           <div>
             <Button onClick={() => handleLogin()}>Login</Button>

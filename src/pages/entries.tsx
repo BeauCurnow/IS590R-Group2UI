@@ -18,7 +18,12 @@ function Entries(props: any) {
     fetch(
       "http://ec2-34-215-202-19.us-west-2.compute.amazonaws.com:8080/api/v1/journalentry/user/" +
         user.id
-    )
+    ,{
+      headers: {
+        Authorization: localStorage.getItem("token") ?? "",
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => {
         return response.json();
       })
@@ -27,14 +32,19 @@ function Entries(props: any) {
       });
   }, []);
 
-  function deleteEntry(entryId: string, index: number) {
-    fetch(
+  async function deleteEntry(entryId: string, index: number) {
+    let response = await fetch(
       "http://ec2-34-215-202-19.us-west-2.compute.amazonaws.com:8080/api/v1/journalentry/" +
         entryId,
       {
         method: "DELETE",
+        headers: {
+          Authorization: localStorage.getItem("token") ?? "",
+          "Content-Type": "application/json",
+        },
       }
     )
+    console.log(response)
     let temp = entries.slice();
     temp.splice(index, 1);
     setEntries(temp);

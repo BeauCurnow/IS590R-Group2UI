@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import Title from "../components/title";
 
 function Register() {
+  const [name, setName] = React.useState("");
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
@@ -36,7 +37,7 @@ function Register() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ name: username, email: email }),
+          body: JSON.stringify({ name: name, username: username, password: password }),
         }
       )
         .then((response) => {
@@ -83,6 +84,7 @@ function Register() {
             }}
           >
             <Input
+              type="password"
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -96,6 +98,7 @@ function Register() {
             }}
           >
             <Input
+              type="password"
               placeholder="Confirm Password"
               onChange={(e) => setConfirmPassword(e.target.value)}
             />

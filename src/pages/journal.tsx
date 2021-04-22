@@ -27,6 +27,7 @@ function Journal(props: any) {
           {
             method: "PUT",
             headers: {
+              Authorization: localStorage.getItem("token") ?? "",
               "Content-type": "application/json; charset=UTF-8",
             },
             body: JSON.stringify({
@@ -48,6 +49,7 @@ function Journal(props: any) {
           {
             method: "POST",
             headers: {
+              Authorization: localStorage.getItem("token") ?? "",
               "Content-type": "application/json; charset=UTF-8",
             },
             body: JSON.stringify({
